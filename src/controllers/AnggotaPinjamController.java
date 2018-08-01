@@ -26,7 +26,17 @@ public class AnggotaPinjamController implements AnggotaPinjamInterfaceController
         this.anggotaPinjamDAO = new AnggotaPinjamDAO(connection);
     }
     
-    
+    /**
+     * 
+     * @param kdAnggotaP
+     * @param kdAnggota
+     * @param kdKaryawan
+     * @param namaJaminan
+     * @param tglPinjam
+     * @param nominalPinjam
+     * @param jangkaWaktu
+     * @return 
+     */
     @Override
     public boolean save(String kdAnggotaP, String kdAnggota, String kdKaryawan, String namaJaminan, Date tglPinjam, int nominalPinjam, int jangkaWaktu) {
         AnggotaPinjam anggotaPinjam = new AnggotaPinjam(kdAnggotaP, kdAnggota, kdKaryawan, namaJaminan, tglPinjam, nominalPinjam, jangkaWaktu);
