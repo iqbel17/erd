@@ -30,15 +30,14 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
     public boolean insert(Anggota anggota) {
     
         boolean flag = false;
-        String query = "INSERT INTO Anggota VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO Anggota VALUES(?,?,?,?)";
         try {
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, anggota.getKdAnggota());
             preparedStatement.setString(2, anggota.getNmAnggota());
-            preparedStatement.setString(3, anggota.getJK());
-            preparedStatement.setString(4, anggota.getTelepon());
-            preparedStatement.setString(5, anggota.getAlamat());
+            preparedStatement.setString(3, anggota.getTelepon());
+            preparedStatement.setString(4, anggota.getAlamat());
             preparedStatement.executeUpdate();
             flag = true;
         } catch (SQLException ex) {
@@ -51,17 +50,16 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
     @Override
     public boolean update(Anggota anggota) {
         try {
-            String query = "UPDATE Anggota SET nama_anggota=?, jk=?,telepon=?,"
+            String query = "UPDATE Anggota SET nama_anggota=?,telepon=?,"
                     + "alamat=?"
                     + " WHERE kd_anggota=?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, anggota.getNmAnggota());
-            preparedStatement.setString(2, anggota.getJK());
-            preparedStatement.setString(3, anggota.getTelepon());
-            preparedStatement.setString(4, anggota.getAlamat());
-            preparedStatement.setString(5, anggota.getKdAnggota());
+                preparedStatement.setString(2, anggota.getTelepon());
+            preparedStatement.setString(3, anggota.getAlamat());
+            preparedStatement.setString(4, anggota.getKdAnggota());
             preparedStatement.execute();
 
             return true;
@@ -99,9 +97,8 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
                 Anggota anggota = new Anggota();
                 anggota.setKdAnggota(rs.getString(1));
                 anggota.setNmAnggota(rs.getString(2));
-                anggota.setJK(rs.getString(3));
-                anggota.setTelepon(rs.getString(4));
-                anggota.setAlamat(rs.getString(5));
+                anggota.setTelepon(rs.getString(3));
+                anggota.setAlamat(rs.getString(4));
                 datas.add(anggota);
             }
 
@@ -125,9 +122,8 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
                 Anggota anggota = new Anggota();
                 anggota.setKdAnggota(rs.getString(1));
                 anggota.setNmAnggota(rs.getString(2));
-                anggota.setJK(rs.getString(3));
-                anggota.setTelepon(rs.getString(4));
-                anggota.setAlamat(rs.getString(5));
+                anggota.setTelepon(rs.getString(3));
+                anggota.setAlamat(rs.getString(4));
                 datas.add(anggota);
             }
 
@@ -150,9 +146,8 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
                   Anggota anggota = new Anggota();
                 anggota.setKdAnggota(rs.getString(1));
                 anggota.setNmAnggota(rs.getString(2));
-                anggota.setJK(rs.getString(3));
-                anggota.setTelepon(rs.getString(4));
-                anggota.setAlamat(rs.getString(5));
+                anggota.setTelepon(rs.getString(3));
+                anggota.setAlamat(rs.getString(4));
                 datas.add(anggota);
             }
 
@@ -174,9 +169,8 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
             while (rs.next()) {
                 anggota.setKdAnggota(rs.getString(1));
                 anggota.setNmAnggota(rs.getString(2));
-                anggota.setJK(rs.getString(3));
-                anggota.setTelepon(rs.getString(4));
-                anggota.setAlamat(rs.getString(5));
+                anggota.setTelepon(rs.getString(3));
+                anggota.setAlamat(rs.getString(4));
             }
 
         } catch (SQLException ex) {

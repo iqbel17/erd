@@ -23,13 +23,13 @@ public class AnggotaController implements AnggotaInterfaceController{
   
   
     @Override
-    public boolean save(String kdAnggota, String NmAnggota, String Jk, String telepon, String Alamat) {
-       return this.adao.insert(new Anggota(kdAnggota, NmAnggota, Jk, telepon, Alamat));
+    public boolean save(String kdAnggota, String NmAnggota, String telepon, String Alamat) {
+       return this.adao.insert(new Anggota(kdAnggota, NmAnggota, telepon, Alamat));
    }
 
     @Override
-    public boolean edit(String kdAnggota, String NmAnggota, String Jk, String telepon, String Alamat) {
-  return this.adao.update(new Anggota(kdAnggota, NmAnggota, Jk, telepon, Alamat));
+    public boolean edit(String kdAnggota, String NmAnggota,  String telepon, String Alamat) {
+  return this.adao.update(new Anggota(kdAnggota, NmAnggota,  telepon, Alamat));
     }
 
  
