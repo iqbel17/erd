@@ -12,14 +12,13 @@ package entities;
 public class Anggota {
  private String kdAnggota;
  private String nmAnggota;
- private String JK;
  private String telepon;
  private String alamat;
 
-    public Anggota(String kdAnggota, String nmAnggota, String JK, String telepon, String alamat) {
+ 
+    public Anggota(String kdAnggota, String nmAnggota, String telepon, String alamat) {
         this.kdAnggota = kdAnggota;
         this.nmAnggota = nmAnggota;
-        this.JK = JK;
         this.telepon = telepon;
         this.alamat = alamat;
     }
@@ -58,16 +57,7 @@ public class Anggota {
     /**
      * @return the JK
      */
-    public String getJK() {
-        return JK;
-    }
-
-    /**
-     * @param JK the JK to set
-     */
-    public void setJK(String JK) {
-        this.JK = JK;
-    }
+    
 
     /**
      * @return the telepon
