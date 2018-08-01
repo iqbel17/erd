@@ -32,7 +32,7 @@ private Connection connection;
         String query = "INSERT INTO Anggota_simpan VALUES(?,?,?,?,?,?)";
         try {
 
-            PreparedStatement preparedStatement = connection.p(query);
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, anggotaSimpan.getKdAnggotaSimpan());
             preparedStatement.setString(2, anggotaSimpan.getKdSimpanan());
             preparedStatement.setString(3, anggotaSimpan.getKdAnggota());
