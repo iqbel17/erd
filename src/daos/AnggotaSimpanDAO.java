@@ -32,7 +32,7 @@ private Connection connection;
         String query = "INSERT INTO Anggota_simpan VALUES(?,?,?,?,?,?)";
         try {
 
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = connection.p(query);
             preparedStatement.setString(1, anggotaSimpan.getKdAnggotaSimpan());
             preparedStatement.setString(2, anggotaSimpan.getKdSimpanan());
             preparedStatement.setString(3, anggotaSimpan.getKdAnggota());
@@ -182,7 +182,7 @@ List<AnggotaSimpan> datas = new ArrayList<>();
   AnggotaSimpan anggotaSimpan = new AnggotaSimpan();
         String query = "SELECT *FROM Anggota_simpan WHERE kd_anggotasimpan = '" + id + "'";
             try {
-
+             
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
 
