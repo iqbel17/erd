@@ -79,11 +79,11 @@ public class AnggotaPinjamDAO implements AnggotaPinjamInterfaceDAO {
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(String id) {
         try {
             String query = "DELETE FROM Anggota_Pinjam WHERE kd_anggotapinjam=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, id);
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -166,7 +166,7 @@ public class AnggotaPinjamDAO implements AnggotaPinjamInterfaceDAO {
     }
 
     @Override
-    public AnggotaPinjam getById(int id) {
+    public AnggotaPinjam getById(String id) {
         AnggotaPinjam anggotapinjam = new AnggotaPinjam();
         String query = "SELECT * FROM anggota_pinjam WHERE kd_anggotapinjam=" + id;
         try {

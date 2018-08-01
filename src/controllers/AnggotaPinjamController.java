@@ -50,7 +50,7 @@ public class AnggotaPinjamController implements AnggotaPinjamInterfaceController
     }
 
     @Override
-    public boolean drop(int id) {
+    public boolean drop(String id) {
         return this.anggotaPinjamDAO.delete(id);
     }
 
@@ -70,7 +70,7 @@ public class AnggotaPinjamController implements AnggotaPinjamInterfaceController
     }
 
     @Override
-    public AnggotaPinjam findById(int id) {
+    public AnggotaPinjam findById(String id) {
         return this.anggotaPinjamDAO.getById(id);
     }
 

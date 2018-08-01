@@ -35,8 +35,9 @@ private Connection connection;
 
         dstppane = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuKaryawan = new javax.swing.JMenu();
         menuAnggota = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,7 +52,12 @@ private Connection connection;
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("File");
+        menuKaryawan.setText("File");
+        menuKaryawan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuKaryawanActionPerformed(evt);
+            }
+        });
 
         menuAnggota.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.CTRL_MASK));
         menuAnggota.setText("Anggota");
@@ -60,9 +66,18 @@ private Connection connection;
                 menuAnggotaActionPerformed(evt);
             }
         });
-        jMenu1.add(menuAnggota);
+        menuKaryawan.add(menuAnggota);
 
-        jMenuBar1.add(jMenu1);
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Karyawan");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuKaryawan.add(jMenuItem1);
+
+        jMenuBar1.add(menuKaryawan);
 
         setJMenuBar(jMenuBar1);
 
@@ -84,6 +99,14 @@ private Connection connection;
         // TODO add your handling code here:
             new ViewProccess().callForm(dstppane, new AnggotaView(connection));
     }//GEN-LAST:event_menuAnggotaActionPerformed
+
+    private void menuKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuKaryawanActionPerformed
+      
+    }//GEN-LAST:event_menuKaryawanActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+          new ViewProccess().callForm(dstppane, new KaryawanView(connection));
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,8 +146,9 @@ private Connection connection;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dstppane;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuAnggota;
+    private javax.swing.JMenu menuKaryawan;
     // End of variables declaration//GEN-END:variables
 }

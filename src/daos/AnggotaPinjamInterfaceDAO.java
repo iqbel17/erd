@@ -18,7 +18,7 @@ public interface AnggotaPinjamInterfaceDAO {
 
     public boolean update(AnggotaPinjam anggotaPinjam);
 
-    public boolean delete(int id);
+    public boolean delete(String id);
 
     public List<AnggotaPinjam> getAll();
 
@@ -26,5 +26,5 @@ public interface AnggotaPinjamInterfaceDAO {
 
     public List<AnggotaPinjam> search(String category, String data);
 
-    public AnggotaPinjam getById(int id);
+    public AnggotaPinjam getById(String id);
 }
