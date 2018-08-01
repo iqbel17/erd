@@ -38,7 +38,7 @@ public class AnggotaSimpanController implements AnggotaSimpanInterfaceController
                 return this.asdao.update(new AnggotaSimpan( kdAnggotasimpan,kdSimpanan,kdAnggota,kdKaryawan,java.sql.Date.valueOf(tglSimpan),Integer.parseInt(nominal)));  }
 
     @Override
-    public boolean drop(int id) {
+    public boolean drop(String id) {
   return this.asdao.delete(id);
  
     }
@@ -61,7 +61,7 @@ public class AnggotaSimpanController implements AnggotaSimpanInterfaceController
    }
 
     @Override
-    public AnggotaSimpan findbyId(int id) {
+    public AnggotaSimpan findbyId(String id) {
            return this.asdao.getById(id); 
    
     }

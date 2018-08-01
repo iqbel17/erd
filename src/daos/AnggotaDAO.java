@@ -73,12 +73,11 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(String id) {
           try {
             String query = "DELETE FROM Anggota Where kd_anggota=?";
-
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, id);
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -164,9 +163,9 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
     }
 
     @Override
-    public Anggota getById(int id) {
+    public Anggota getById(String id) {
      Anggota anggota = new Anggota();
-        String query = "SELECT *FROM Anggota WHERE kd_anggota = " + id + "'"; 
+        String query = "SELECT *FROM Anggota WHERE kd_anggota = '" + id + "'"; 
          try {
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);

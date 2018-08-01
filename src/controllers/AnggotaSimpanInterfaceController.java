@@ -15,9 +15,9 @@ import java.util.List;
 public interface AnggotaSimpanInterfaceController {
     public boolean save(String kdAnggotasimpan, String kdSimpanan, String kdAnggota,String kdKaryawan, String tglSimpan, String nominal);
     public boolean edit(String kdAnggotasimpan, String kdSimpanan, String kdAnggota,String kdKaryawan, String tglSimpan, String nominal);
-    public boolean drop (int id);
+    public boolean drop (String id);
     public List<AnggotaSimpan> binding();
     public List<AnggotaSimpan> bindingsort(String category, String sort);
     public List<AnggotaSimpan> find(String category, String Data);
-    public AnggotaSimpan findbyId(int id);
+    public AnggotaSimpan findbyId(String id);
 }

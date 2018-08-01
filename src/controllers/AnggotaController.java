@@ -32,11 +32,7 @@ public class AnggotaController implements AnggotaInterfaceController{
   return this.adao.update(new Anggota(kdAnggota, NmAnggota, Jk, telepon, Alamat));
     }
 
-    @Override
-    public boolean drop(int id) {
-            return this.adao.delete(id);
-    }
-
+ 
     @Override
     public List<Anggota> binding() {
         return this.adao.getAll();
@@ -53,7 +49,12 @@ public class AnggotaController implements AnggotaInterfaceController{
     }
 
     @Override
-    public Anggota findbyId(int id) {
+    public Anggota findbyId(String id) {
           return this.adao.getById(id); 
+    }
+
+    @Override
+    public boolean drop(String id) {
+    return this.adao.delete(id);
     }
  }

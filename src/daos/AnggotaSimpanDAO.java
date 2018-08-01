@@ -74,13 +74,13 @@ private Connection connection;
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(String id) {
       
  try {
             String query = "DELETE FROM Anggota_simpan Where kd_anggotasimpan=?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, id);
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -177,10 +177,10 @@ List<AnggotaSimpan> datas = new ArrayList<>();
     }
 
     @Override
-    public AnggotaSimpan getById(int id) {
+    public AnggotaSimpan getById(String id) {
     
   AnggotaSimpan anggotaSimpan = new AnggotaSimpan();
-        String query = "SELECT *FROM Anggota_simpan WHERE kd_anggotasimpan = " + id + "'";
+        String query = "SELECT *FROM Anggota_simpan WHERE kd_anggotasimpan = '" + id + "'";
             try {
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);

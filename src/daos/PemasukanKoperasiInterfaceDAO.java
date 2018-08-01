@@ -14,9 +14,9 @@ import entities.Pemasukankoperasi;
 public interface PemasukanKoperasiInterfaceDAO {
     public boolean insert(Pemasukankoperasi pemasukankoperasi);
     public boolean update(Pemasukankoperasi pemasukankoperasi);
-    public boolean delete(int id);
+    public boolean delete(String id);
     public List<Pemasukankoperasi> getAll();
     public List<Pemasukankoperasi> getAll(String category,String sort);
     public List<Pemasukankoperasi> search(String category,String data);
-    public Pemasukankoperasi getById(int id);
+    public Pemasukankoperasi getById(String id);
 }

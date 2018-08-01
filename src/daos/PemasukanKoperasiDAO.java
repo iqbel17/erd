@@ -67,12 +67,12 @@ public class PemasukanKoperasiDAO implements PemasukanKoperasiInterfaceDAO{
         return false; }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(String id) {
    try {
             String query = "DELETE FROM pemasukan_koperasi Where kd_masukkoperasi=?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, id);
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -159,9 +159,9 @@ public class PemasukanKoperasiDAO implements PemasukanKoperasiInterfaceDAO{
     }
 
     @Override
-    public Pemasukankoperasi getById(int id) {
+    public Pemasukankoperasi getById(String id) {
     Pemasukankoperasi pemasukankoperasi= new Pemasukankoperasi();
-        String query = "SELECT *FROM Pemasukan_koperasi WHERE kd_masukkoperasi = " + id + "'"; 
+        String query = "SELECT *FROM Pemasukan_koperasi WHERE kd_masukkoperasi = '" + id + "'"; 
          try {
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);

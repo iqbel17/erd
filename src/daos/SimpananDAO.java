@@ -70,12 +70,12 @@ private Connection connection;
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(String id) {
        try {
             String query = "DELETE FROM Simpanan Where kd_simpanan=?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, id);
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -155,9 +155,9 @@ private Connection connection;
     }
 
     @Override
-    public Simpanan getById(int id) {
+    public Simpanan getById(String id) {
          Simpanan simpanan = new Simpanan();
-        String query = "SELECT *FROM Simpanan WHERE kd_simpanan = " + id + "'";  
+        String query = "SELECT *FROM Simpanan WHERE kd_simpanan = '" + id + "'";  
     try {
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);

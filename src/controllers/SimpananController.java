@@ -37,7 +37,7 @@ private Simpanan simpanan;
            return this.sdao.update(new Simpanan(kdSimpanan, Integer.parseInt(jmlSimpanan)));   }
 
     @Override
-    public boolean drop(int id) {
+    public boolean drop(String id) {
            return this.sdao.delete(id); }
 
     @Override
@@ -57,8 +57,10 @@ private Simpanan simpanan;
   }
 
     @Override
-    public Simpanan findbyId(int id) {
+    public Simpanan findbyId(String id) {
            return this.sdao.getById(id); 
     }
+
+    
  }
     

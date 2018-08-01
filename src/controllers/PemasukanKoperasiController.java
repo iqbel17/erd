@@ -36,7 +36,7 @@ private SimpananDAO sdao;
   }  
 
     @Override
-    public boolean drop(int id) {
+    public boolean drop(String id) {
      return this.pkdao.delete(id);
   } 
 
@@ -57,7 +57,7 @@ private SimpananDAO sdao;
    }
 
     @Override
-    public Pemasukankoperasi findbyId(int id) {
+    public Pemasukankoperasi findbyId(String id) {
           return this.pkdao.getById(id);
    
     }

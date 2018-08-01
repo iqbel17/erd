@@ -15,9 +15,9 @@ import entities.Anggota;
 public interface AnggotaInterfaceDAO {
     public boolean insert(Anggota anggota);
     public boolean update(Anggota anggota);
-    public boolean delete(int id);
+    public boolean delete(String id);
     public List<Anggota> getAll();
     public List<Anggota> getAll(String category,String sort);
     public List<Anggota> search(String category,String data);
-    public Anggota getById(int id);
+    public Anggota getById(String id);
  }

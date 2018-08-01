@@ -15,9 +15,9 @@ import java.util.List;
 public interface AnggotaInterfaceController {
     public boolean save(String kdAnggota, String NmAnggota, String Jk, String telepon, String Alamat);
     public boolean edit(String kdAnggota, String NmAnggota, String Jk, String telepon, String Alamat);
-    public boolean drop (int id);
+    public boolean drop (String id);
     public List<Anggota> binding();
     public List<Anggota> bindingsort(String category, String sort);
     public List<Anggota> find(String category, String Data);
-    public Anggota findbyId(int id);
+    public Anggota findbyId(String id);
 }
