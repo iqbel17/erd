@@ -19,7 +19,7 @@ public interface AnggotaPinjamInterfaceController {
 
     public boolean edit(String kdAnggotaP, String kdAnggota, String kdKaryawan, String namaJaminan, Date tglPinjam, int nominalPinjam, int jangkaWaktu);
 
-    public boolean drop(int id);
+    public boolean drop(String id);
 
     public List<AnggotaPinjam> binding();
 
@@ -27,5 +27,5 @@ public interface AnggotaPinjamInterfaceController {
 
     public List<AnggotaPinjam> find(String category, String data);
 
-    public AnggotaPinjam findById(int id);
+    public AnggotaPinjam findById(String id);
 }
