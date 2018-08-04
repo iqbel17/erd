@@ -16,22 +16,39 @@ public class Pemasukankoperasi {
     private String kdSimpanan;
     private Date tglSimpankoperasi;
     private int nominalsimpan;
+    private String nmPemasukan;
 
-    public Pemasukankoperasi(String kdMasukkoperasi, String kdSimpanan, Date tglSimpankoperasi, int nominalsimpan) {
+    public Pemasukankoperasi(String kdMasukkoperasi, String nmPemasukan) {
+        this.kdMasukkoperasi = kdMasukkoperasi;
+        this.nmPemasukan = nmPemasukan;
+    }
+
+    public Pemasukankoperasi(String kdMasukkoperasi, String kdSimpanan, Date tglSimpankoperasi, int nominalsimpan, String nmPemasukan) {
         this.kdMasukkoperasi = kdMasukkoperasi;
         this.kdSimpanan = kdSimpanan;
         this.tglSimpankoperasi = tglSimpankoperasi;
         this.nominalsimpan = nominalsimpan;
+        this.nmPemasukan = nmPemasukan;
     }
 
+    
     public Pemasukankoperasi() {
     }
+    
 
     /**
      * @return the kdMasukkoperasi
      */
     public String getKdMasukkoperasi() {
         return kdMasukkoperasi;
+    }
+
+    public String getNmPemasukan() {
+        return nmPemasukan;
+    }
+
+    public void setNmPemasukan(String nmPemasukan) {
+        this.nmPemasukan = nmPemasukan;
     }
 
     /**

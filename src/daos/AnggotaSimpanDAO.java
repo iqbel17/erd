@@ -106,7 +106,7 @@ List<AnggotaSimpan> datas = new ArrayList<>();
                 anggotaSimpan.setKdAnggota(rs.getString(3));
                 anggotaSimpan.setKdKaryawan(rs.getString(4));
                 anggotaSimpan.setTglSimpan(rs.getDate(5));
-                anggotaSimpan.setNominal(rs.getInt(5));
+                anggotaSimpan.setNominal(rs.getInt(6));
                 
                 datas.add(anggotaSimpan);
             }

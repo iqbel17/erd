@@ -6,6 +6,7 @@
 package daos;
 
 import entities.Anggota;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,7 +45,22 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
             Logger.getLogger(AnggotaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return flag;
-    
+
+//    try {
+//             CallableStatement cs = connection.prepareCall("{ CALL insAnggota(?,?,?,?) }");
+//             cs.setString(1, anggota.getKdAnggota());
+//             cs.setString(2, anggota.getNmAnggota());
+//                          cs.setString(3, anggota.getTelepon());
+//                 
+//                          cs.setString(4, anggota.getAlamat());
+//             cs.executeUpdate();
+//             flag=true;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AnggotaDAO.class.getName()).log(Level.SEVERE, null, ex);
+//            
+//        }
+//    
+//    return flag;
     }
 
     @Override

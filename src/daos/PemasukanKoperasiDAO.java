@@ -49,15 +49,13 @@ public class PemasukanKoperasiDAO implements PemasukanKoperasiInterfaceDAO{
     @Override
     public boolean update(Pemasukankoperasi pemasukankoperasi) {
         try {
-            String query = "UPDATE Pemasukan_Koperasi SET kd_simpanan=?, tgl_simpan=?,nominal=?,"
+            String query = "UPDATE Pemasukan_Koperasi SET nama_pemasukan=?,"
                                        + " WHERE kd_masukkoperasi=?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-            preparedStatement.setString(1, pemasukankoperasi.getKdSimpanan());
-            preparedStatement.setDate(2, pemasukankoperasi.getTglSimpankoperasi());
-            preparedStatement.setInt(3, pemasukankoperasi.getNominalsimpan());
-            preparedStatement.setString(4, pemasukankoperasi.getKdMasukkoperasi());
+            preparedStatement.setString(1, pemasukankoperasi.getNmPemasukan());
+            preparedStatement.setString(2, pemasukankoperasi.getKdMasukkoperasi());
             preparedStatement.execute();
 
             return true;

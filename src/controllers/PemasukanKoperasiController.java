@@ -26,13 +26,13 @@ private SimpananDAO sdao;
     }
 
     @Override
-    public boolean save(String kdmasukkoperasi, String kdSimpan, String tglMasuk, String nominalMasuk) {
-        return this.pkdao.insert(new Pemasukankoperasi(kdmasukkoperasi, kdSimpan,java.sql.Date.valueOf(tglMasuk),Integer.parseInt(nominalMasuk)));
+    public boolean save(String kdmasukkoperasi,String kdSimpan ,String tglMasuk ,String nominalMasuk, String namaPemasukan) {
+        return this.pkdao.insert(new Pemasukankoperasi(kdmasukkoperasi,kdSimpan,java.sql.Date.valueOf(tglMasuk),Integer.parseInt(nominalMasuk), namaPemasukan));
   }
 
     @Override
-    public boolean edit(String kdmasukkoperasi, String kdSimpan, String tglMasuk, String nominalMasuk) {
-        return this.pkdao.update(new Pemasukankoperasi(kdmasukkoperasi, kdSimpan,java.sql.Date.valueOf(tglMasuk),Integer.parseInt(nominalMasuk)));
+    public boolean edit(String kdmasukKoperasi, String namaPemasukan) {
+        return this.pkdao.update(new Pemasukankoperasi(kdmasukKoperasi, namaPemasukan));
   }  
 
     @Override

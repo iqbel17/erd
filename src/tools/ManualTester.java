@@ -21,7 +21,7 @@ public class ManualTester {
 //        String countryId = "KS";
 //        String countryName = "Korea Selatan";
 //        int regionId = 3;
-     //  String countryId = "TT";
+     //   String countryId = "TT";
      //   String countryName = "Timor Timur";
      //   int regionId = 3;
    //     System.out.println(countryController.edit());
@@ -41,16 +41,15 @@ public class ManualTester {
 //        System.out.println((char)48);
 //        System.out.println((char)57);
 
-
-    String agt= "A01";
-    String nm= "coba";
-     String JK="L";
-     String tel="081921423";
-     String alamat="Jl Tanjung duren ";
-     
-         AnggotaController anggotaController = new AnggotaController(connection);
-       //  System.out.println(EmployeeController.save(regionId, regionName));
-        
+//        String agt = "A06";
+//        String nm = "coba";
+//
+//        String tel = "081921423";
+//        String alamat = "Jl Tanjung duren ";
+//
+//        AnggotaController anggotaController = new AnggotaController(connection);
+//        System.out.println(anggotaController.save(agt, nm, tel, alamat));
+//
        // System.out.println(anggotaController.save(agt, nm, JK, tel, alamat));
       //  System.out.println(anggotaController.edit(agt, nm, JK, tel, alamat));
         //System.out.println(anggotaController.drop(agt));
@@ -58,7 +57,7 @@ public class ManualTester {
 //          System.out.println(anggota.);
 //        }
 
-     System.out.println(anggotaController.findbyId("AG01"));
+  //   System.out.println(anggotaController.findbyId("AG01"));
 //  for (Anggota anggota : anggotaController.binding()) {
 //        System.out.println(anggota.getKdAnggota()+" - "+anggota.getNmAnggota()+" - "+anggota.getJK()+"-"+anggota.getTelepon()+"-"+anggota.getAlamat());
 //      }
