@@ -38,8 +38,8 @@ public class AnggotaPinjamController implements AnggotaPinjamInterfaceController
      * @return 
      */
     @Override
-    public boolean save(String kdAnggotaP, String kdAnggota, String kdKaryawan, String namaJaminan, int nominalPinjam, int jangkaWaktu) {
-        AnggotaPinjam anggotaPinjam = new AnggotaPinjam(kdAnggotaP, kdAnggota, kdKaryawan, namaJaminan, nominalPinjam, jangkaWaktu);
+    public boolean save( String kdAnggota, String kdKaryawan, String namaJaminan, int nominalPinjam, int jangkaWaktu) {
+        AnggotaPinjam anggotaPinjam = new AnggotaPinjam( kdAnggota, kdKaryawan, namaJaminan, nominalPinjam, jangkaWaktu);
         return this.anggotaPinjamDAO.insert(anggotaPinjam);
     }
 
@@ -56,12 +56,12 @@ public class AnggotaPinjamController implements AnggotaPinjamInterfaceController
 
     @Override
     public List<AnggotaPinjam> binding() {
-        return this.anggotaPinjamDAO.getAll();
+        return this.anggotaPinjamDAO.getSemua();
     }
 
     @Override
     public List<AnggotaPinjam> bindingsort(String category, String sort) {
-        return this.anggotaPinjamDAO.getAllCs(category, sort);
+        return this.anggotaPinjamDAO.getSemuaSort(category, sort);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class AnggotaPinjamController implements AnggotaPinjamInterfaceController
 
     @Override
     public AnggotaPinjam findById(String id) {
-        return this.anggotaPinjamDAO.getById(id);
+        return this.anggotaPinjamDAO.getAIDI(id);
     }
 
     

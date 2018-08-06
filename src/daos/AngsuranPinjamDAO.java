@@ -81,7 +81,7 @@ public class AngsuranPinjamDAO implements AngsuranPinjamInterfaceDAO {
     }
 
     @Override
-    public List<entities.AngsuranPinjam> getAll() {
+    public List<entities.AngsuranPinjam> getSemua() {
         List<AngsuranPinjam> datas = new ArrayList<>();
         String query = "SELECT * FROM Angsuranpinjam";
         try {
@@ -104,7 +104,7 @@ public class AngsuranPinjamDAO implements AngsuranPinjamInterfaceDAO {
     }
 
     @Override
-    public List<entities.AngsuranPinjam> getAllCs(String category, String sort) {
+    public List<entities.AngsuranPinjam> getSemuaSort(String category, String sort) {
         List<AngsuranPinjam> datas = new ArrayList<>();
         String query = "SELECT * FROM angsuranpinjam WHERE " + category + " LIKE '%" + sort + "%'";
         try {
@@ -148,7 +148,7 @@ public class AngsuranPinjamDAO implements AngsuranPinjamInterfaceDAO {
     }
 
     @Override
-    public entities.AngsuranPinjam getById(String id) {
+    public entities.AngsuranPinjam getAIDI(String id) {
          AngsuranPinjam angsuranPinjam = new AngsuranPinjam();
         String query = "SELECT * FROM angsuranpinjam WHERE kd_angsuran=" + id;
         try {

@@ -60,13 +60,13 @@ public class AnggotaPinjamDAO implements AnggotaPinjamInterfaceDAO {
         boolean flag = false;
         try {
 
-            CallableStatement cs = connection.prepareCall("{ CALL insPinjaman(?,?,?,?,?,?) }");
-            cs.setString(1, anggotaPinjam.getKdAnggotaP());
-            cs.setString(2, anggotaPinjam.getKdAnggota());
-            cs.setString(3, anggotaPinjam.getKdKaryawan());
-            cs.setString(4, anggotaPinjam.getNamaJaminan());
-            cs.setInt(5, anggotaPinjam.getNominalPinjam());
-            cs.setInt(6, anggotaPinjam.getJangkaWaktu());
+            CallableStatement cs = connection.prepareCall("{ CALL insPinjaman(?,?,?,?,?) }");
+            
+            cs.setString(1, anggotaPinjam.getKdAnggota());
+            cs.setString(2, anggotaPinjam.getKdKaryawan());
+            cs.setString(3, anggotaPinjam.getNamaJaminan());
+            cs.setInt(4, anggotaPinjam.getNominalPinjam());
+            cs.setInt(5, anggotaPinjam.getJangkaWaktu());
             cs.executeUpdate();
             flag = true;
         } catch (SQLException ex) {
@@ -130,7 +130,7 @@ public class AnggotaPinjamDAO implements AnggotaPinjamInterfaceDAO {
     }
 
     @Override
-    public List<AnggotaPinjam> getAll() {
+    public List<AnggotaPinjam> getSemua() {
         List<AnggotaPinjam> datas = new ArrayList<>();
         String query = "SELECT * FROM Anggota_Pinjam";
         try {
@@ -154,7 +154,7 @@ public class AnggotaPinjamDAO implements AnggotaPinjamInterfaceDAO {
     }
 
     @Override
-    public List<AnggotaPinjam> getAllCs(String category, String sort) {
+    public List<AnggotaPinjam> getSemuaSort(String category, String sort) {
         List<AnggotaPinjam> datas = new ArrayList<>();
         String query = "SELECT * FROM anggotapinjam WHERE " + category + " LIKE '%" + sort + "%'";
         try {
@@ -201,7 +201,7 @@ public class AnggotaPinjamDAO implements AnggotaPinjamInterfaceDAO {
     }
 
     @Override
-    public AnggotaPinjam getById(String id) {
+    public AnggotaPinjam getAIDI(String id) {
         AnggotaPinjam anggotapinjam = new AnggotaPinjam();
         String query = "SELECT * FROM anggota_pinjam WHERE kd_anggotapinjam=" + id;
         try {

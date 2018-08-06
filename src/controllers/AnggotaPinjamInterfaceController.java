@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface AnggotaPinjamInterfaceController {
 
-    public boolean save(String kdAnggotaP, String kdAnggota, String kdKaryawan, String namaJaminan, int nominalPinjam, int jangkaWaktu);
+    public boolean save( String kdAnggota, String kdKaryawan, String namaJaminan, int nominalPinjam, int jangkaWaktu);
 
     public boolean edit(String kdAnggotaP, String kdAnggota, String kdKaryawan, String namaJaminan);
 

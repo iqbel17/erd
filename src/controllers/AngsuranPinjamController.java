@@ -47,12 +47,12 @@ public class AngsuranPinjamController implements AngsuranPinjamInterfaceControll
 
     @Override
     public List<AngsuranPinjam> binding() {
-        return this.angsuranPinjamDAO.getAll();
+        return this.angsuranPinjamDAO.getSemua();
     }
 
     @Override
     public List<AngsuranPinjam> bindingsort(String category, String sort) {
-        return this.angsuranPinjamDAO.getAllCs(category, sort);
+        return this.angsuranPinjamDAO.getSemuaSort(category, sort);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class AngsuranPinjamController implements AngsuranPinjamInterfaceControll
 
     @Override
     public AngsuranPinjam findById(String id) {
-        return this.angsuranPinjamDAO.getById(id);
+        return this.angsuranPinjamDAO.getAIDI(id);
     }
     
     
