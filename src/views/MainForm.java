@@ -16,7 +16,7 @@ import views.ViewProccess;
 public class MainForm extends javax.swing.JFrame {
 private Connection connection;
     private ViewProccess viewProccess;
-    private SessionLogin sessionLogin; 
+
     /**
      * Creates new form NewJFrame
      */
@@ -25,8 +25,7 @@ private Connection connection;
     public MainForm() {
      initComponents();
         this.connection = new MyConnection().getConnection();
-        this.sessionLogin = new SessionLogin();
-        lblName.setText(sessionLogin.getUserLogin());
+
     }
 
     
@@ -40,12 +39,13 @@ private Connection connection;
     private void initComponents() {
 
         dstppane = new javax.swing.JDesktopPane();
-        lblName = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuAnggota = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,10 +58,8 @@ private Connection connection;
         );
         dstppaneLayout.setVerticalGroup(
             dstppaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 262, Short.MAX_VALUE)
+            .addGap(0, 273, Short.MAX_VALUE)
         );
-
-        lblName.setText("jLabel1");
 
         jMenu1.setText("File");
 
@@ -92,6 +90,24 @@ private Connection connection;
         });
         jMenu1.add(jMenuItem2);
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem4.setText("Anggota Pinjam");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem5.setText("Angsuran ");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
+
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Keluar");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -110,17 +126,10 @@ private Connection connection;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(dstppane, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(dstppane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(dstppane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -148,6 +157,16 @@ private Connection connection;
                
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+           new ViewProccess().callForm(dstppane, new AnggotaPinjamView(connection));
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+         new ViewProccess().callForm(dstppane, new AngsuranPinjamView(connection));
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -160,7 +179,8 @@ private Connection connection;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JLabel lblName;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem menuAnggota;
     // End of variables declaration//GEN-END:variables
 

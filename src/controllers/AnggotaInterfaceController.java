@@ -20,4 +20,5 @@ public interface AnggotaInterfaceController {
     public List<Anggota> bindingsort(String category, String sort);
     public List<Anggota> find(String category, String Data);
     public Anggota findbyId(String id);
+    
 }

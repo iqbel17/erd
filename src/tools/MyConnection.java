@@ -23,12 +23,12 @@ public class MyConnection {
             ods.setServiceName("XE");
             ods.setServerName("localhost");
             ods.setPortNumber(1521);
-            ods.setDatabaseName("HR");
+            ods.setDatabaseName("KOPERASI");
             ods.setUser("System");
-            ods.setPassword("goce2256");
+            ods.setPassword("4554");
             connect = ods.getConnection();
             connect.createStatement()
-                    .execute("alter session set " + "current_schema=HR");
+                    .execute("alter session set " + "current_schema=KOPERASI");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());

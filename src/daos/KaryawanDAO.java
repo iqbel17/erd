@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package daos;
 
 import entities.Karyawan;
 import java.sql.Connection;
@@ -49,7 +49,11 @@ public class KaryawanDAO implements KaryawanInterfaceDAO {
         }
         return flag;
     }
-
+    /**
+     * Function update data to table karyawan
+     * @param karyawan Karyawan
+     * @return false
+     */
     @Override
     public boolean update(Karyawan karyawan) {
         String query = "UPDATE KARYAWAN SET namaa_karyawan=?,alamat=?,telepon=?,password=? WHERE kd_karyawan=?";
@@ -67,7 +71,11 @@ public class KaryawanDAO implements KaryawanInterfaceDAO {
         }
         return false;
     }
-
+    /**
+     * Function delete by id
+     * @param id String
+     * @return false
+     */
     @Override
     public boolean delete(String id) {
         try {
@@ -81,7 +89,10 @@ public class KaryawanDAO implements KaryawanInterfaceDAO {
         }
         return false;
     }
-
+    /**
+     * Function get all data from table karyawan
+     * @return datas
+     */
     @Override
     public List<Karyawan> getAll() {
         List<Karyawan> datas = new ArrayList<>();
@@ -104,7 +115,12 @@ public class KaryawanDAO implements KaryawanInterfaceDAO {
         }
         return datas;
     }
-
+    /**
+     * Function get all data by category and sort
+     * @param category String
+     * @param sort String
+     * @return datas
+     */
     @Override
     public List<Karyawan> getAllCs(String category, String sort) {
         List<Karyawan> datas = new ArrayList<>();
@@ -127,7 +143,12 @@ public class KaryawanDAO implements KaryawanInterfaceDAO {
         }
         return datas;
     }
-
+    /**
+     * Function search dta 
+     * @param category String
+     * @param data String
+     * @return datas
+     */
     @Override
     public List<Karyawan> search(String category, String data) {
         List<Karyawan> datas = new ArrayList<>();
@@ -169,5 +190,20 @@ public class KaryawanDAO implements KaryawanInterfaceDAO {
             Logger.getLogger(KaryawanDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return karyawan;
+    }
+
+    @Override
+    public boolean getLogin(String kdKaryawan, String passLogin) {
+        
+        try {
+            String query = "SELECT *From karyawan where kd_karyawan=? and password=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, kdKaryawan);
+            preparedStatement.setString(2, passLogin);
+        return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(KaryawanDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

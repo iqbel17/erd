@@ -29,16 +29,13 @@ private Connection connection;
     @Override
     public boolean insert(AnggotaSimpan anggotaSimpan) {
     boolean flag = false;
-        String query = "INSERT INTO Anggota_simpan VALUES(?,?,?,?,?,?)";
+        String query = "INSERT INTO Anggota_simpan VALUES(?,'S01',?,?,sysdate,?)";
         try {
-
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, anggotaSimpan.getKdAnggotaSimpan());
-            preparedStatement.setString(2, anggotaSimpan.getKdSimpanan());
-            preparedStatement.setString(3, anggotaSimpan.getKdAnggota());
-            preparedStatement.setString(4, anggotaSimpan.getKdKaryawan());
-            preparedStatement.setDate(5, anggotaSimpan.getTglSimpan());
-            preparedStatement.setInt(6, anggotaSimpan.getNominal());
+            preparedStatement.setString(2, anggotaSimpan.getKdAnggota());
+            preparedStatement.setString(3, anggotaSimpan.getKdKaryawan());
+           preparedStatement.setInt(4, anggotaSimpan.getNominal());
             preparedStatement.executeUpdate();
             flag = true;
         } catch (SQLException ex) {
@@ -52,20 +49,17 @@ private Connection connection;
     @Override
     public boolean update(AnggotaSimpan anggotaSimpan) {
         try {
-            String query = "UPDATE Anggota_simpan SET kd_simpanan=?, kd_anggota=?"
-                    + "kd_karyawan=?, tgl_simpan=?, nominal=?"
+            String query = "UPDATE Anggota_simpan SET kd_anggota=?,"
+                    + "kd_karyawan=?, tgl_simpan = sysdate, nominal=?"
                     + " WHERE kd_anggotasimpan=?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-            preparedStatement.setString(1, anggotaSimpan.getKdAnggotaSimpan());
-             preparedStatement.setString(2, anggotaSimpan.getKdSimpanan());
-            preparedStatement.setString(3, anggotaSimpan.getKdAnggota());
-            preparedStatement.setString(4, anggotaSimpan.getKdKaryawan());
-            preparedStatement.setDate(5, anggotaSimpan.getTglSimpan());
-            preparedStatement.setInt(6, anggotaSimpan.getNominal());
+            preparedStatement.setString(1, anggotaSimpan.getKdAnggota());
+             preparedStatement.setString(2, anggotaSimpan.getKdKaryawan());
+            preparedStatement.setInt(3, anggotaSimpan.getNominal());
+            preparedStatement.setString(4, anggotaSimpan.getKdAnggotaSimpan());
             preparedStatement.execute();
-
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(AnggotaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -151,7 +145,7 @@ List<AnggotaSimpan> datas = new ArrayList<>();
     public List<AnggotaSimpan> search(String category, String data) {
         
  List<AnggotaSimpan> datas = new ArrayList<>();
-        String query = "SELECT *FROM Anggota_simpan WHERE " + category + " " + " like '%" + data + "%'";
+        String query = "SELECT kd_anggotasimpan,kd_anggota,tgl_simpan,nominal FROM Anggota_simpan WHERE " + category + " " + " like '%" + data + "%'";
            try {
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -160,12 +154,10 @@ List<AnggotaSimpan> datas = new ArrayList<>();
             while (rs.next()) {
                  AnggotaSimpan anggotaSimpan = new AnggotaSimpan();
                 anggotaSimpan.setKdAnggotaSimpan(rs.getString(1));
-                anggotaSimpan.setKdSimpanan(rs.getString(2));
-                anggotaSimpan.setKdAnggota(rs.getString(3));
-                anggotaSimpan.setKdKaryawan(rs.getString(4));
-                anggotaSimpan.setTglSimpan(rs.getDate(5));
-                anggotaSimpan.setNominal(rs.getInt(5));
-                              datas.add(anggotaSimpan);
+                anggotaSimpan.setKdAnggota(rs.getString(2));            
+                anggotaSimpan.setTglSimpan(rs.getDate(3));
+                anggotaSimpan.setNominal(rs.getInt(4));
+                       datas.add(anggotaSimpan);
 
             }
 

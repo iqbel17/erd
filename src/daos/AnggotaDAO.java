@@ -20,16 +20,17 @@ import java.util.logging.Logger;
  *
  * @author iqbael17
  */
-public class AnggotaDAO implements AnggotaInterfaceDAO{
+public class AnggotaDAO implements AnggotaInterfaceDAO {
 
     private Connection connection;
-    
+
     public AnggotaDAO(Connection connection) {
         this.connection = connection;
     }
+
     @Override
     public boolean insert(Anggota anggota) {
-    
+
         boolean flag = false;
         String query = "INSERT INTO Anggota VALUES(?,?,?,?)";
         try {
@@ -73,7 +74,7 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, anggota.getNmAnggota());
-                preparedStatement.setString(2, anggota.getTelepon());
+            preparedStatement.setString(2, anggota.getTelepon());
             preparedStatement.setString(3, anggota.getAlamat());
             preparedStatement.setString(4, anggota.getKdAnggota());
             preparedStatement.execute();
@@ -83,12 +84,12 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
             Logger.getLogger(AnggotaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
-    
+
     }
 
     @Override
     public boolean delete(String id) {
-          try {
+        try {
             String query = "DELETE FROM Anggota Where kd_anggota=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, id);
@@ -98,7 +99,7 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
             Logger.getLogger(AnggotaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
-     }
+    }
 
     @Override
     public List<Anggota> getAll() {
@@ -123,11 +124,12 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
         }
 
         return datas;
-        
+
     }
+
     @Override
     public List<Anggota> getAll(String category, String sort) {
-       List<Anggota> datas = new ArrayList<>();
+        List<Anggota> datas = new ArrayList<>();
         String query = "SELECT *FROM Anggota ORDER BY " + category + " " + sort;
         try {
 
@@ -151,15 +153,15 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
 
     @Override
     public List<Anggota> search(String category, String data) {
-    List<Anggota> datas = new ArrayList<>();
+        List<Anggota> datas = new ArrayList<>();
         String query = "SELECT *FROM Anggota WHERE " + category + " " + " like '%" + data + "%'";
-         try {
+        try {
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                  Anggota anggota = new Anggota();
+                Anggota anggota = new Anggota();
                 anggota.setKdAnggota(rs.getString(1));
                 anggota.setNmAnggota(rs.getString(2));
                 anggota.setTelepon(rs.getString(3));
@@ -175,9 +177,9 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
 
     @Override
     public Anggota getById(String id) {
-     Anggota anggota = new Anggota();
-        String query = "SELECT *FROM Anggota WHERE kd_anggota = '" + id + "'"; 
-         try {
+        Anggota anggota = new Anggota();
+        String query = "SELECT *FROM Anggota WHERE kd_anggota = '" + id + "'";
+        try {
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
@@ -194,5 +196,4 @@ public class AnggotaDAO implements AnggotaInterfaceDAO{
         }
         return anggota;
     }
-    
 }

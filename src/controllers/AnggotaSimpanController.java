@@ -29,13 +29,13 @@ public class AnggotaSimpanController implements AnggotaSimpanInterfaceController
     
     
     @Override
-    public boolean save(String kdAnggotasimpan, String kdSimpanan, String kdAnggota, String kdKaryawan, String tglSimpan, String nominal) {
-                return this.asdao.insert(new AnggotaSimpan( kdAnggotasimpan,kdSimpanan,kdAnggota,kdKaryawan,java.sql.Date.valueOf(tglSimpan),Integer.parseInt(nominal)));
+    public boolean save(String kdAnggotasimpan, String kdAnggota, String kdKaryawan, String nominal) {
+                return this.asdao.insert(new AnggotaSimpan(kdAnggotasimpan,kdAnggota,kdKaryawan,Integer.parseInt(nominal)));
 }
 
     @Override
-    public boolean edit(String kdAnggotasimpan, String kdSimpanan, String kdAnggota, String kdKaryawan, String tglSimpan, String nominal) {
-                return this.asdao.update(new AnggotaSimpan( kdAnggotasimpan,kdSimpanan,kdAnggota,kdKaryawan,java.sql.Date.valueOf(tglSimpan),Integer.parseInt(nominal)));  }
+    public boolean edit(String kdAnggotasimpan, String kdAnggota, String kdKaryawan, String nominal) {
+                return this.asdao.update(new AnggotaSimpan( kdAnggotasimpan,kdAnggota,kdKaryawan,Integer.parseInt(nominal)));  }
 
     @Override
     public boolean drop(String id) {
@@ -57,7 +57,7 @@ public class AnggotaSimpanController implements AnggotaSimpanInterfaceController
 
     @Override
     public List<AnggotaSimpan> find(String category, String Data) {
-          return this.asdao.getAll(category, Data);
+          return this.asdao.search(category, Data);
    }
 
     @Override
