@@ -58,6 +58,12 @@ public class AnggotaPinjamController implements AnggotaPinjamInterfaceController
     public List<AnggotaPinjam> binding() {
         return this.anggotaPinjamDAO.getSemua();
     }
+    /**
+     * Function binding by sort
+     * @param category String
+     * @param sort String
+     * @return getSemuaSort
+     */
 
     @Override
     public List<AnggotaPinjam> bindingsort(String category, String sort) {
