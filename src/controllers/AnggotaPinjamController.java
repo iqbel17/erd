@@ -63,12 +63,21 @@ public class AnggotaPinjamController implements AnggotaPinjamInterfaceController
     public List<AnggotaPinjam> bindingsort(String category, String sort) {
         return this.anggotaPinjamDAO.getSemuaSort(category, sort);
     }
-
+    /**
+     * Function find by category 
+     * @param category String
+     * @param data String
+     * @return search get category and data
+     */
     @Override
     public List<AnggotaPinjam> find(String category, String data) {
         return this .anggotaPinjamDAO.search(category, data);
     }
-
+    /**
+     * Function find by ID
+     * @param id String
+     * @return getAIDI
+     */
     @Override
     public AnggotaPinjam findById(String id) {
         return this.anggotaPinjamDAO.getAIDI(id);
