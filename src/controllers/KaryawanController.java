@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.KaryawanDAO;
+import daos.KaryawanDAO;
 import entities.Karyawan;
 import java.sql.Connection;
 import java.util.List;

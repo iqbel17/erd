@@ -12,7 +12,7 @@ import java.sql.Date;
  * @author Gusma
  */
 public class AnggotaPinjam {
-    private String kdAnggotaP;
+    private String kdAnggotapinjam;
     private String kdAnggota;
     private String kdKaryawan;
     private String namaJaminan;
@@ -23,8 +23,8 @@ public class AnggotaPinjam {
     public AnggotaPinjam() {
     }
 
-    public AnggotaPinjam(String kdAnggotaP, String kdAnggota, String kdKaryawan, String namaJaminan, Date tglPinjam, int nominalPinjam, int jangkaWaktu) {
-        this.kdAnggotaP = kdAnggotaP;
+    public AnggotaPinjam(String kdAnggotapinjam, String kdAnggota, String kdKaryawan, String namaJaminan, Date tglPinjam, int nominalPinjam, int jangkaWaktu) {
+        this.kdAnggotapinjam = kdAnggotapinjam;
         this.kdAnggota = kdAnggota;
         this.kdKaryawan = kdKaryawan;
         this.namaJaminan = namaJaminan;
@@ -34,17 +34,17 @@ public class AnggotaPinjam {
     }
 
     /**
-     * @return the kdAnggotaP
+     * @return the kdAnggotapinjam
      */
-    public String getKdAnggotaP() {
-        return kdAnggotaP;
+    public String getKdAnggotapinjam() {
+        return kdAnggotapinjam;
     }
 
     /**
-     * @param kdAnggotaP the kdAnggotaP to set
+     * @param kdAnggotapinjam the kdAnggotapinjam to set
      */
-    public void setKdAnggotaP(String kdAnggotaP) {
-        this.kdAnggotaP = kdAnggotaP;
+    public void setKdAnggotapinjam(String kdAnggotapinjam) {
+        this.kdAnggotapinjam = kdAnggotapinjam;
     }
 
     /**
@@ -129,5 +129,7 @@ public class AnggotaPinjam {
      */
     public void setJangkaWaktu(int jangkaWaktu) {
         this.jangkaWaktu = jangkaWaktu;
-    }    
+    }
+    
+    
 }

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package tools;
-import controller.AnggotaPinjamController;
+//import controller.AnggotaPinjamController;
 import controllers.AnggotaController;
 import entities.Anggota;
 import java.sql.Connection;
@@ -82,7 +82,7 @@ public class ManualTester {
 //        String stateProvince = "Jawa Tengah";
 //        String countryId = "ZW";
         // RegionController regionController = new RegionController(connection);
-        AnggotaPinjamController anggotaPinjamController = new AnggotaPinjamController(connection);
+//        AnggotaPinjamController anggotaPinjamController = new AnggotaPinjamController(connection);
 //       System.out.println(karyawanController.save(kdKaryawan, namaaKaryawan, alamat, telepon, password));
 //        System.out.println(karyawanController.edit(kdKaryawan,namaaKaryawan, alamat, telepon, password));
 //       System.out.println(karyawanController.drop(kdKaryawan));

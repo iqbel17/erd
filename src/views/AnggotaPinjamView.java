@@ -5,17 +5,29 @@
  */
 package views;
 
+import controllers.AnggotaPinjamController;
+import entities.AnggotaPinjam;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import tools.MyConnection;
+
 /**
  *
  * @author Gusma
  */
 public class AnggotaPinjamView extends javax.swing.JInternalFrame {
 
+    private AnggotaPinjamController anggotaPinjamController;
+
     /**
      * Creates new form AnggotaPinjamView
      */
-    public AnggotaPinjamView() {
+    public AnggotaPinjamView(Connection connection) {
         initComponents();
+        this.anggotaPinjamController = new AnggotaPinjamController(new MyConnection().getConnection());
+        bindingTable();
+
     }
 
     /**
@@ -51,6 +63,10 @@ public class AnggotaPinjamView extends javax.swing.JInternalFrame {
         cmbAnggotaPinjam = new javax.swing.JComboBox<>();
         btnCari = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setResizable(true);
+
         tblAPinjam.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -62,6 +78,11 @@ public class AnggotaPinjamView extends javax.swing.JInternalFrame {
 
             }
         ));
+        tblAPinjam.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAPinjamMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblAPinjam);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Anggota Pinjam"));
@@ -81,10 +102,25 @@ public class AnggotaPinjamView extends javax.swing.JInternalFrame {
         jLabel7.setText("Jangka Waktu");
 
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDrop.setText("Drop");
+        btnDrop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDropActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -158,25 +194,37 @@ public class AnggotaPinjamView extends javax.swing.JInternalFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
+        cmbAnggotaPinjam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "kd_anggotapinjam", "kd_anggota", "kd_karyawan", "nama_jaminan", "tgl_pinjam", "nominal_pinjam", "jangka_waktu" }));
+        cmbAnggotaPinjam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbAnggotaPinjamActionPerformed(evt);
+            }
+        });
+
         btnCari.setText("Cari");
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(cmbAnggotaPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textCari, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCari)
-                        .addGap(32, 32, 32))))
+                        .addContainerGap())
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,6 +244,66 @@ public class AnggotaPinjamView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblAPinjamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAPinjamMouseClicked
+        int row = tblAPinjam.getSelectedRow();
+        textkdAnggotaP.setText(tblAPinjam.getValueAt(row, 0).toString());
+        textAnggota.setText(tblAPinjam.getValueAt(row, 1).toString());
+        textkdKaryawan.setText(tblAPinjam.getValueAt(row, 2).toString());
+        textNamaJ.setText(tblAPinjam.getValueAt(row, 3).toString());
+        textTanggal.setText(tblAPinjam.getValueAt(row, 4).toString());
+        textNominal.setText(tblAPinjam.getValueAt(row, 5).toString());
+        textJangka.setText(tblAPinjam.getValueAt(row, 6).toString());
+    }//GEN-LAST:event_tblAPinjamMouseClicked
+
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        String category = cmbAnggotaPinjam.getSelectedItem().toString();
+        String data = textCari.getText();
+        searchTable(category, data);
+    }//GEN-LAST:event_btnCariActionPerformed
+
+    private void btnDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDropActionPerformed
+        String message = "Failed to drop data..";
+        int flag = JOptionPane.showConfirmDialog(this, "Really?", "DELETE?", JOptionPane.YES_NO_OPTION);
+        if (flag == 0) {
+            if (anggotaPinjamController.drop((textkdAnggotaP.getText()))) {
+                message = "Success to drop data";
+            }
+            JOptionPane.showMessageDialog(this, message, "Notification", JOptionPane.QUESTION_MESSAGE);
+        }
+        bindingTable();
+        reset();
+    }//GEN-LAST:event_btnDropActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        String message = "Failed to edit data..";
+        boolean flag = this.anggotaPinjamController.edit(textkdAnggotaP.getText(),
+                textAnggota.getText(), textkdKaryawan.getText(), textNamaJ.getText(), java.sql.Date.valueOf(textTanggal.getText()),
+                Integer.parseInt(textNominal.getText()), Integer.parseInt(textJangka.getText()));
+        if (flag) {
+            message = "Success to save data";
+        }
+        JOptionPane.showMessageDialog(this, message, "Notification", JOptionPane.INFORMATION_MESSAGE);
+        bindingTable();
+        reset();
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        boolean flag = this.anggotaPinjamController.save(textkdAnggotaP.getText(),
+                textAnggota.getText(), textkdKaryawan.getText(), textNamaJ.getText(), java.sql.Date.valueOf(textTanggal.getText()),
+                Integer.parseInt(textNominal.getText()), Integer.parseInt(textJangka.getText()));
+        String message = "Failed to save data..";
+        if (flag) {
+            message = "Success to save data";
+        }
+        JOptionPane.showMessageDialog(this, message, "Notification", JOptionPane.INFORMATION_MESSAGE);
+        bindingTable();
+        reset();
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void cmbAnggotaPinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAnggotaPinjamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbAnggotaPinjamActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -223,4 +331,51 @@ public class AnggotaPinjamView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField textkdAnggotaP;
     private javax.swing.JTextField textkdKaryawan;
     // End of variables declaration//GEN-END:variables
+ /**
+  * Function to show data from table
+  */
+    public void bindingTable() {
+        String[] header = {"KD AnggotaPinjam", "KD Anggota", "KD Karyawan", "Nama Jaminan", "Tanggal Pinjam", "Nominal Pinjam", "Jangka Waktu"};
+        DefaultTableModel defaultTableModel = new DefaultTableModel(header, 0);
+        for (AnggotaPinjam anggotaPinjam : anggotaPinjamController.bindingsort("kd_anggotapinjam", "asc")) {
+            //for (Region region : regionController.binding("region_id","asc")) {
+            Object[] anggotaPinjam1 = {anggotaPinjam.getKdAnggotapinjam(), anggotaPinjam.getKdAnggota(),
+                anggotaPinjam.getKdKaryawan(), anggotaPinjam.getNamaJaminan(), anggotaPinjam.getTglPinjam(), anggotaPinjam.getNominalPinjam(),
+                anggotaPinjam.getJangkaWaktu()
+            };
+            defaultTableModel.addRow(anggotaPinjam1);
+        }
+        tblAPinjam.setModel(defaultTableModel);
+    }
+    /**
+     * function search table
+     * @param category String
+     * @param data String
+     */
+    public void searchTable(String category, String data) {
+        String[] header = {"KD AnggotaPinjam", "KD Anggota", "KD Karyawan", "Nama Jaminan", "Tanggal Pinjam", "Nominal Pinjam", "Jangka Waktu"};
+        DefaultTableModel defaultTableModel = new DefaultTableModel(header, 0);
+        for (AnggotaPinjam anggotaPinjam : anggotaPinjamController.find(category, data)) {
+            Object[] anggotapinjam1 = {
+                anggotaPinjam.getKdAnggotapinjam(), anggotaPinjam.getKdAnggota(),
+                anggotaPinjam.getKdKaryawan(), anggotaPinjam.getNamaJaminan(),
+                anggotaPinjam.getTglPinjam(), anggotaPinjam.getNominalPinjam(),
+                anggotaPinjam.getJangkaWaktu()
+            };
+            defaultTableModel.addRow(anggotapinjam1);
+        }
+        tblAPinjam.setModel(defaultTableModel);
+    }
+    /**
+     * function reset data
+     */
+    public void reset() {
+        textkdAnggotaP.setText("");
+        textAnggota.setText("");
+        textkdKaryawan.setText("");
+        textNamaJ.setText("");
+        textTanggal.setText("");
+        textNominal.setText("");
+        textJangka.setText("");
+    }
 }

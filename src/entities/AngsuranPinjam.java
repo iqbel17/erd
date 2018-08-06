@@ -13,18 +13,18 @@ import java.sql.Date;
  */
 public class AngsuranPinjam {
     private String kdAngsuran;
-    private String kdAnggotaP;
-    private Date tglAngsur;
+    private String kdAnggotaPinjam;
+    private Date tanggalAngsur;
     private int jumlahAngsuran;
     private String status;
 
     public AngsuranPinjam() {
     }
 
-    public AngsuranPinjam(String kdAngsuran, String kdAnggotaP, Date tglAngsur, int jumlahAngsuran, String status) {
+    public AngsuranPinjam(String kdAngsuran, String kdAnggotaPinjam, Date tanggalAngsur, int jumlahAngsuran, String status) {
         this.kdAngsuran = kdAngsuran;
-        this.kdAnggotaP = kdAnggotaP;
-        this.tglAngsur = tglAngsur;
+        this.kdAnggotaPinjam = kdAnggotaPinjam;
+        this.tanggalAngsur = tanggalAngsur;
         this.jumlahAngsuran = jumlahAngsuran;
         this.status = status;
     }
@@ -44,31 +44,31 @@ public class AngsuranPinjam {
     }
 
     /**
-     * @return the kdAnggotaP
+     * @return the kdAnggotaPinjam
      */
-    public String getKdAnggotaP() {
-        return kdAnggotaP;
+    public String getKdAnggotaPinjam() {
+        return kdAnggotaPinjam;
     }
 
     /**
-     * @param kdAnggotaP the kdAnggotaP to set
+     * @param kdAnggotaPinjam the kdAnggotaPinjam to set
      */
-    public void setKdAnggotaP(String kdAnggotaP) {
-        this.kdAnggotaP = kdAnggotaP;
+    public void setKdAnggotaPinjam(String kdAnggotaPinjam) {
+        this.kdAnggotaPinjam = kdAnggotaPinjam;
     }
 
     /**
-     * @return the tglAngsur
+     * @return the tanggalAngsur
      */
-    public Date getTglAngsur() {
-        return tglAngsur;
+    public Date getTanggalAngsur() {
+        return tanggalAngsur;
     }
 
     /**
-     * @param tglAngsur the tglAngsur to set
+     * @param tanggalAngsur the tanggalAngsur to set
      */
-    public void setTglAngsur(Date tglAngsur) {
-        this.tglAngsur = tglAngsur;
+    public void setTanggalAngsur(Date tanggalAngsur) {
+        this.tanggalAngsur = tanggalAngsur;
     }
 
     /**

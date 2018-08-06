@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package daos;
 
 import entities.AnggotaPinjam;
 import java.util.List;
@@ -13,18 +13,17 @@ import java.util.List;
  * @author Gusma
  */
 public interface AnggotaPinjamInterfaceDAO {
-
     public boolean insert(AnggotaPinjam anggotaPinjam);
-
+    
     public boolean update(AnggotaPinjam anggotaPinjam);
-
+    
     public boolean delete(String id);
-
-    public List<AnggotaPinjam> getAll();
-
-    public List<AnggotaPinjam> getAllCs(String category, String sort);
-
-    public List<AnggotaPinjam> search(String category, String data);
-
-    public AnggotaPinjam getById(String id);
+    
+    public List<AnggotaPinjam> getSemua();
+    
+    public List<AnggotaPinjam> getSemuaSort(String kategori , String sort);
+    
+    public List<AnggotaPinjam> search (String kategori, String data);
+    
+    public AnggotaPinjam getAIDI(String id);
 }

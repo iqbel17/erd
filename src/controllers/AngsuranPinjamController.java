@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controllers;
 
-import dao.AngsuranPinjamDAO;
+import daos.AngsuranPinjamDAO;
 import entities.AngsuranPinjam;
 import java.sql.Connection;
 import java.sql.Date;
@@ -22,21 +22,19 @@ public class AngsuranPinjamController implements AngsuranPinjamInterfaceControll
     public AngsuranPinjamController() {
     }
 
-    public AngsuranPinjamController(Connection connection) {
-        this.angsuranPinjamDAO= new AngsuranPinjamDAO(connection);
+    public AngsuranPinjamController(Connection c) {
+        this.angsuranPinjamDAO = new AngsuranPinjamDAO(c);
     }
-    
-    
 
     @Override
-    public boolean save(String kdAngsuran, String kdAnggotaP, Date tglAngsur, int jumlahAngsuran, String status) {
-        AngsuranPinjam angsuranPinjam = new AngsuranPinjam(kdAngsuran, kdAnggotaP, tglAngsur, jumlahAngsuran, status);
+    public boolean save(String kdAngsuran, String kdAnggotaPinjam, Date tanggalAngsur, int jumlahAngsuran, String status) {
+         AngsuranPinjam angsuranPinjam = new AngsuranPinjam(kdAngsuran, kdAnggotaPinjam, tanggalAngsur, jumlahAngsuran,status);
         return this.angsuranPinjamDAO.insert(angsuranPinjam);
     }
 
     @Override
-    public boolean edit(String kdAngsuran, String kdAnggotaP, Date tglAngsur, int jumlahAngsuran, String status) {
-        AngsuranPinjam angsuranPinjam = new AngsuranPinjam(kdAngsuran, kdAnggotaP, tglAngsur, jumlahAngsuran, status);
+    public boolean edit(String kdAngsuran, String kdAnggotaPinjam, Date tanggalAngsur, int jumlahAngsuran, String status) {
+        AngsuranPinjam angsuranPinjam = new AngsuranPinjam(kdAngsuran, kdAnggotaPinjam, tanggalAngsur, jumlahAngsuran,status);
         return this.angsuranPinjamDAO.update(angsuranPinjam);
     }
 
@@ -47,22 +45,22 @@ public class AngsuranPinjamController implements AngsuranPinjamInterfaceControll
 
     @Override
     public List<AngsuranPinjam> binding() {
-        return this.angsuranPinjamDAO.getAll();
+        return this.angsuranPinjamDAO.getSemua();
     }
 
     @Override
-    public List<AngsuranPinjam> bindingsort(String category, String sort) {
-        return this.angsuranPinjamDAO.getAllCs(category, sort);
+    public List<AngsuranPinjam> bindingsort(String kategori, String sort) {
+        return this.angsuranPinjamDAO.getSemuaSort(kategori, sort);
     }
 
     @Override
-    public List<AngsuranPinjam> find(String category, String data) {
-        return this.angsuranPinjamDAO.search(category, data);
+    public List<AngsuranPinjam> find(String kategori, String data) {
+        return this.angsuranPinjamDAO.search(kategori, data);
     }
 
     @Override
-    public AngsuranPinjam findById(String id) {
-        return this.angsuranPinjamDAO.getById(id);
+    public AngsuranPinjam findBy(String id) {
+        return this.angsuranPinjamDAO.getAIDI(id);
     }
     
     

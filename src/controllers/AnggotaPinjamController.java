@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controllers;
 
-import dao.AnggotaPinjamDAO;
+import daos.AnggotaPinjamDAO;
 import entities.AnggotaPinjam;
 import java.sql.Connection;
 import java.sql.Date;
@@ -16,37 +16,26 @@ import java.util.List;
  * @author Gusma
  */
 public class AnggotaPinjamController implements AnggotaPinjamInterfaceController{
-    
+
     private AnggotaPinjamDAO anggotaPinjamDAO;
 
     public AnggotaPinjamController() {
     }
-
-    public AnggotaPinjamController(Connection connection) {
-        this.anggotaPinjamDAO = new AnggotaPinjamDAO(connection);
+    public AnggotaPinjamController(Connection c){
+        this.anggotaPinjamDAO = new AnggotaPinjamDAO((c));
     }
     
-    /**
-     * 
-     * @param kdAnggotaP
-     * @param kdAnggota
-     * @param kdKaryawan
-     * @param namaJaminan
-     * @param tglPinjam
-     * @param nominalPinjam
-     * @param jangkaWaktu
-     * @return 
-     */
+    
     @Override
-    public boolean save(String kdAnggotaP, String kdAnggota, String kdKaryawan, String namaJaminan, Date tglPinjam, int nominalPinjam, int jangkaWaktu) {
-        AnggotaPinjam anggotaPinjam = new AnggotaPinjam(kdAnggotaP, kdAnggota, kdKaryawan, namaJaminan, tglPinjam, nominalPinjam, jangkaWaktu);
+    public boolean save(String kdAnggotapinjam, String kdAnggota, String kdKaryawan, String namaJaminan, Date tglPinjam, int nominalPinjam, int jangkaWaktu) {
+       AnggotaPinjam anggotaPinjam = new AnggotaPinjam(kdAnggotapinjam, kdAnggota, kdKaryawan, namaJaminan,tglPinjam,nominalPinjam,jangkaWaktu);
         return this.anggotaPinjamDAO.insert(anggotaPinjam);
     }
 
     @Override
-    public boolean edit(String kdAnggotaP, String kdAnggota, String kdKaryawan, String namaJaminan, Date tglPinjam, int nominalPinjam, int jangkaWaktu) {
-        AnggotaPinjam anggotaPinjam = new AnggotaPinjam(kdAnggotaP, kdAnggota, kdKaryawan, namaJaminan, tglPinjam, nominalPinjam, jangkaWaktu);
-       return this.anggotaPinjamDAO.update(anggotaPinjam);
+    public boolean edit(String kdAnggotapinjam, String kdAnggota, String kdKaryawan, String namaJaminan, Date tglPinjam, int nominalPinjam, int jangkaWaktu) {
+       AnggotaPinjam anggotaPinjam = new AnggotaPinjam(kdAnggotapinjam, kdAnggota, kdKaryawan, namaJaminan,tglPinjam,nominalPinjam,jangkaWaktu);
+        return this.anggotaPinjamDAO.update(anggotaPinjam);
     }
 
     @Override
@@ -56,24 +45,23 @@ public class AnggotaPinjamController implements AnggotaPinjamInterfaceController
 
     @Override
     public List<AnggotaPinjam> binding() {
-        return this.anggotaPinjamDAO.getAll();
+        return this.anggotaPinjamDAO.getSemua();
     }
 
     @Override
-    public List<AnggotaPinjam> bindingsort(String category, String sort) {
-        return this.anggotaPinjamDAO.getAllCs(category, sort);
+    public List<AnggotaPinjam> bindingsort(String kategori, String sort) {
+        return this.anggotaPinjamDAO.getSemuaSort(kategori, sort);
     }
 
     @Override
-    public List<AnggotaPinjam> find(String category, String data) {
-        return this .anggotaPinjamDAO.search(category, data);
+    public List<AnggotaPinjam> find(String kategori, String data) {
+        return this.anggotaPinjamDAO.search(kategori, data);
     }
 
     @Override
-    public AnggotaPinjam findById(String id) {
-        return this.anggotaPinjamDAO.getById(id);
+    public AnggotaPinjam findBy(String id) {
+        return this.anggotaPinjamDAO.getAIDI(id);
     }
-
     
     
 }
