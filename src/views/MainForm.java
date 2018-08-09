@@ -49,12 +49,13 @@ private Connection connection;
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Form Master");
 
         javax.swing.GroupLayout dstppaneLayout = new javax.swing.GroupLayout(dstppane);
         dstppane.setLayout(dstppaneLayout);
         dstppaneLayout.setHorizontalGroup(
             dstppaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 445, Short.MAX_VALUE)
         );
         dstppaneLayout.setVerticalGroup(
             dstppaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,7 +100,7 @@ private Connection connection;
         });
         jMenu1.add(jMenuItem4);
 
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItem5.setText("Angsuran ");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,11 +126,11 @@ private Connection connection;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dstppane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(dstppane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dstppane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(dstppane)
         );
 
         pack();
@@ -167,9 +168,6 @@ private Connection connection;
          new ViewProccess().callForm(dstppane, new AngsuranPinjamView(connection));
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

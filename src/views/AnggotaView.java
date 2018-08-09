@@ -31,6 +31,7 @@ public class AnggotaView extends javax.swing.JInternalFrame {
         bindingTable();
         btnDrop.setEnabled(false);
         btnedit.setEnabled(false);
+        txtKdAnggota.setEnabled(false);
 
     }
 
@@ -256,6 +257,7 @@ public class AnggotaView extends javax.swing.JInternalFrame {
          btnSave.setEnabled(false);
          btnedit.setEnabled(true);
          btnDrop.setEnabled(true);
+         txtKdAnggota.setEnabled(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_tblAnggotaMouseClicked
 
@@ -284,7 +286,7 @@ reset();
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-          boolean flag = this.anggotaController.save(txtKdAnggota.getText(), txtNamaAgt.getText(),txtTelepon.getText(),txtAlamat.getText());
+          boolean flag = this.anggotaController.save(txtNamaAgt.getText(),txtTelepon.getText(),txtAlamat.getText());
         String message = "Failed to save data";
         if (flag) {
             message = "succes save";
@@ -297,7 +299,7 @@ reset();
     private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
         // TODO add your handling code here:
         String message="Failed to edit data";
-if(anggotaController.edit(txtKdAnggota.getText(), txtNamaAgt.getText(),txtTelepon.getText(),txtAlamat.getText())){
+if(anggotaController.edit( txtNamaAgt.getText(),txtTelepon.getText(),txtAlamat.getText())){
     message ="Succes to edit data";
 }
         JOptionPane.showMessageDialog(this, message,"Notification",JOptionPane.WARNING_MESSAGE);

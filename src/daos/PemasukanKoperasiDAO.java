@@ -28,10 +28,10 @@ public class PemasukanKoperasiDAO implements PemasukanKoperasiInterfaceDAO {
     }
 
     /**
-     * Function insert data pada tabel pemasukankoperasi
+     * fungsi dao insert pemasukan koperasi dalam insert ini menggunakan trigger
      *
      * @param pemasukankoperasi
-     * @return flag
+     * @return
      */
     @Override
     public boolean insert(Pemasukankoperasi pemasukankoperasi) {
@@ -52,10 +52,10 @@ public class PemasukanKoperasiDAO implements PemasukanKoperasiInterfaceDAO {
     }
 
     /**
-     * Function update data from table pemasukkan koperasi
+     * fungsi update pemasukan koperasi kolom nama pemasukan
      *
      * @param pemasukankoperasi
-     * @return false
+     * @return
      */
     @Override
     public boolean update(Pemasukankoperasi pemasukankoperasi) {
@@ -76,32 +76,6 @@ public class PemasukanKoperasiDAO implements PemasukanKoperasiInterfaceDAO {
         return false;
     }
 
-    /**
-     * Function delete data by ID
-     *
-     * @param id String
-     * @return false
-     */
-    @Override
-    public boolean delete(String id) {
-        try {
-            String query = "DELETE FROM pemasukan_koperasi Where kd_masukkoperasi=?";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, id);
-            preparedStatement.executeUpdate();
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(AnggotaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
-
-    /**
-     * Function get All data from table pmeasukan_koperasi
-     *
-     * @return datas
-     */
     @Override
     public List<Pemasukankoperasi> getAll() {
         List<Pemasukankoperasi> datas = new ArrayList<>();
@@ -123,16 +97,11 @@ public class PemasukanKoperasiDAO implements PemasukanKoperasiInterfaceDAO {
         } catch (SQLException ex) {
             Logger.getLogger(AnggotaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return datas;
+
     }
 
-    /**
-     * Function get All data by category and sort
-     *
-     * @param category String
-     * @param sort String
-     * @return datas
-     */
     @Override
     public List<Pemasukankoperasi> getAll(String category, String sort) {
         List<Pemasukankoperasi> datas = new ArrayList<>();
@@ -157,13 +126,6 @@ public class PemasukanKoperasiDAO implements PemasukanKoperasiInterfaceDAO {
         return datas;
     }
 
-    /**
-     * Function search data by category
-     *
-     * @param category String
-     * @param data String
-     * @return datas
-     */
     @Override
     public List<Pemasukankoperasi> search(String category, String data) {
         List<Pemasukankoperasi> datas = new ArrayList<>();
@@ -189,12 +151,6 @@ public class PemasukanKoperasiDAO implements PemasukanKoperasiInterfaceDAO {
 
     }
 
-    /**
-     * Function getby ID
-     *
-     * @param id String
-     * @return pemasukankoperasi
-     */
     @Override
     public Pemasukankoperasi getById(String id) {
         Pemasukankoperasi pemasukankoperasi = new Pemasukankoperasi();
@@ -215,5 +171,7 @@ public class PemasukanKoperasiDAO implements PemasukanKoperasiInterfaceDAO {
             Logger.getLogger(AnggotaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return pemasukankoperasi;
+
     }
+
 }

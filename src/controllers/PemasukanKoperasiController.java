@@ -31,10 +31,6 @@ private SimpananDAO sdao;
         return this.pkdao.update(new Pemasukankoperasi(kdmasukKoperasi, namaPemasukan));
   }  
 
-    @Override
-    public boolean drop(String id) {
-     return this.pkdao.delete(id);
-  } 
 
 
     @Override

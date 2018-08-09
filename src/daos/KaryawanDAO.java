@@ -49,11 +49,7 @@ public class KaryawanDAO implements KaryawanInterfaceDAO {
         }
         return flag;
     }
-    /**
-     * Function update data to table karyawan
-     * @param karyawan Karyawan
-     * @return false
-     */
+
     @Override
     public boolean update(Karyawan karyawan) {
         String query = "UPDATE KARYAWAN SET namaa_karyawan=?,alamat=?,telepon=?,password=? WHERE kd_karyawan=?";
@@ -71,11 +67,7 @@ public class KaryawanDAO implements KaryawanInterfaceDAO {
         }
         return false;
     }
-    /**
-     * Function delete by id
-     * @param id String
-     * @return false
-     */
+
     @Override
     public boolean delete(String id) {
         try {
@@ -89,10 +81,7 @@ public class KaryawanDAO implements KaryawanInterfaceDAO {
         }
         return false;
     }
-    /**
-     * Function get all data from table karyawan
-     * @return datas
-     */
+
     @Override
     public List<Karyawan> getAll() {
         List<Karyawan> datas = new ArrayList<>();
@@ -115,12 +104,7 @@ public class KaryawanDAO implements KaryawanInterfaceDAO {
         }
         return datas;
     }
-    /**
-     * Function get all data by category and sort
-     * @param category String
-     * @param sort String
-     * @return datas
-     */
+
     @Override
     public List<Karyawan> getAllCs(String category, String sort) {
         List<Karyawan> datas = new ArrayList<>();
@@ -143,12 +127,7 @@ public class KaryawanDAO implements KaryawanInterfaceDAO {
         }
         return datas;
     }
-    /**
-     * Function search dta 
-     * @param category String
-     * @param data String
-     * @return datas
-     */
+
     @Override
     public List<Karyawan> search(String category, String data) {
         List<Karyawan> datas = new ArrayList<>();

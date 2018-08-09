@@ -27,10 +27,16 @@ public class AngsuranPinjamDAO implements AngsuranPinjamInterfaceDAO {
     public AngsuranPinjamDAO(Connection connection) {
         this.connection = connection;
     }
-
+    
+    
+        /**
+         * fungsi insert ke dalam tabel angsuran  menggunakan store procedure
+         * @param angsuranPinjam
+         * @return 
+         */
     @Override
     public boolean insert(entities.AngsuranPinjam angsuranPinjam) {
-  boolean flag = false;
+        boolean flag = false;
         try {
 
             CallableStatement cs = connection.prepareCall("{ CALL insAngs(?,?) }");
@@ -81,7 +87,7 @@ public class AngsuranPinjamDAO implements AngsuranPinjamInterfaceDAO {
     }
 
     @Override
-    public List<entities.AngsuranPinjam> getSemua() {
+    public List<entities.AngsuranPinjam> getAll() {
         List<AngsuranPinjam> datas = new ArrayList<>();
         String query = "SELECT * FROM Angsuranpinjam";
         try {
@@ -104,7 +110,7 @@ public class AngsuranPinjamDAO implements AngsuranPinjamInterfaceDAO {
     }
 
     @Override
-    public List<entities.AngsuranPinjam> getSemuaSort(String category, String sort) {
+    public List<entities.AngsuranPinjam> getAllCs(String category, String sort) {
         List<AngsuranPinjam> datas = new ArrayList<>();
         String query = "SELECT * FROM angsuranpinjam WHERE " + category + " LIKE '%" + sort + "%'";
         try {
@@ -148,8 +154,8 @@ public class AngsuranPinjamDAO implements AngsuranPinjamInterfaceDAO {
     }
 
     @Override
-    public entities.AngsuranPinjam getAIDI(String id) {
-         AngsuranPinjam angsuranPinjam = new AngsuranPinjam();
+    public entities.AngsuranPinjam getById(String id) {
+        AngsuranPinjam angsuranPinjam = new AngsuranPinjam();
         String query = "SELECT * FROM angsuranpinjam WHERE kd_angsuran=" + id;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -159,9 +165,9 @@ public class AngsuranPinjamDAO implements AngsuranPinjamInterfaceDAO {
                 angsuranPinjam.setKdAnggotaP(rs.getString("kd_anggota"));
                 angsuranPinjam.setTglAngsur(rs.getDate("kd_karyawan"));
                 angsuranPinjam.setJumlahAngsuran(rs.getInt("nama_pinjaman"));
-                angsuranPinjam.setStatus(rs.getString("tgl_pinjam"));   
+                angsuranPinjam.setStatus(rs.getString("tgl_pinjam"));
             }
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(AnggotaPinjamDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return angsuranPinjam;

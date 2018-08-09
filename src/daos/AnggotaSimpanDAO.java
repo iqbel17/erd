@@ -27,6 +27,12 @@ public class AnggotaSimpanDAO implements AnggotaSimpanInterfaceDAO {
         this.connection = connection;
     }
 
+    /**
+     * fungsi inert anggota simpan
+     *
+     * @param anggotaSimpan
+     * @return
+     */
     @Override
     public boolean insert(AnggotaSimpan anggotaSimpan) {
         boolean flag = false;
@@ -45,7 +51,11 @@ public class AnggotaSimpanDAO implements AnggotaSimpanInterfaceDAO {
         return flag;
 
     }
-
+    /**
+     * fungsi anggota melakukan penyimpanan
+     * @param anggotaSimpan
+     * @return 
+     */
     @Override
     public boolean update(AnggotaSimpan anggotaSimpan) {
         try {
@@ -66,7 +76,12 @@ public class AnggotaSimpanDAO implements AnggotaSimpanInterfaceDAO {
         }
         return false;
     }
-
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @Override
     public boolean delete(String id) {
 

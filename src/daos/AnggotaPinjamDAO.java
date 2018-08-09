@@ -32,7 +32,7 @@ public class AnggotaPinjamDAO implements AnggotaPinjamInterfaceDAO {
     }
 
     /**
-     * Function Insert
+     * Function Insert menggunakan store procedure
      *
      * @param anggotaPinjam AnggotaPinjam
      * @return flag
@@ -130,7 +130,7 @@ public class AnggotaPinjamDAO implements AnggotaPinjamInterfaceDAO {
     }
 
     @Override
-    public List<AnggotaPinjam> getSemua() {
+    public List<AnggotaPinjam> getAll() {
         List<AnggotaPinjam> datas = new ArrayList<>();
         String query = "SELECT * FROM Anggota_Pinjam";
         try {
@@ -154,7 +154,7 @@ public class AnggotaPinjamDAO implements AnggotaPinjamInterfaceDAO {
     }
 
     @Override
-    public List<AnggotaPinjam> getSemuaSort(String category, String sort) {
+    public List<AnggotaPinjam> getAllCs(String category, String sort) {
         List<AnggotaPinjam> datas = new ArrayList<>();
         String query = "SELECT * FROM anggotapinjam WHERE " + category + " LIKE '%" + sort + "%'";
         try {
@@ -201,7 +201,7 @@ public class AnggotaPinjamDAO implements AnggotaPinjamInterfaceDAO {
     }
 
     @Override
-    public AnggotaPinjam getAIDI(String id) {
+    public AnggotaPinjam getById(String id) {
         AnggotaPinjam anggotapinjam = new AnggotaPinjam();
         String query = "SELECT * FROM anggota_pinjam WHERE kd_anggotapinjam=" + id;
         try {

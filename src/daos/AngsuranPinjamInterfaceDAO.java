@@ -20,11 +20,12 @@ public interface AngsuranPinjamInterfaceDAO {
 
     public boolean delete(String id);
 
-    public List<AngsuranPinjam> getSemua();
+    public List<AngsuranPinjam> getAll();
 
-    public List<AngsuranPinjam> getSemuaSort(String kategori, String sort);
+    public List<AngsuranPinjam> getAllCs(String category, String sort);
 
-    public List<AngsuranPinjam> search(String kategori, String data);
+    public List<AngsuranPinjam> search(String category, String data);
 
-    public AngsuranPinjam getAIDI(String id);
+    public AngsuranPinjam getById(String id);
+
 }
